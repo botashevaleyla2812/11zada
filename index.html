@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <title>Meetly — видеособеседование</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Meetly, главная"><span class="brand-mark">M</span><span>meetly</span></a>
+      <div class="connection-status" aria-live="polite">
+        <span class="status-dot" id="statusDot"></span>
+        <span id="statusText">Не подключено</span>
+      </div>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">VIDEO INTERVIEW ROOM</p>
+      <h1>Видеособеседование <span>1 на 1</span></h1>
+      <p class="intro-copy">Подключитесь к комнате и начните разговор. Камера и микрофон всегда под вашим контролем.</p>
+    </section>
+
+    <section class="video-grid" aria-label="Окна видеосвязи">
+      <article class="video-card">
+        <video id="localVideo" autoplay muted playsinline></video>
+        <div class="video-placeholder local-placeholder" id="localPlaceholder">
+          <div class="placeholder-icon">◉</div>
+          <strong>Ваша камера</strong>
+          <span>Видео появится после подключения</span>
+        </div>
+        <div class="video-caption">
+          <span class="person-icon">ВЫ</span>
+          <span><strong>Вы</strong><small id="localState">Камера выключена</small></span>
+        </div>
+        <span class="video-chip">YOU</span>
+      </article>
+
+      <article class="video-card">
+        <video id="remoteVideo" autoplay playsinline></video>
+        <div class="video-placeholder" id="remotePlaceholder">
+          <div class="placeholder-icon remote-icon">✦</div>
+          <strong>Ожидание собеседника</strong>
+          <span>Второй участник появится здесь</span>
+        </div>
+        <div class="video-caption">
+          <span class="person-icon remote-person-icon">✦</span>
+          <span><strong>Собеседник</strong><small id="remoteState">Пока не подключён</small></span>
+        </div>
+      </article>
+    </section>
+
+    <section class="control-panel" aria-label="Управление звонком">
+      <button class="tool-button" id="micBtn" type="button" disabled>
+        <span class="tool-icon" id="micIcon">♩</span><span id="micLabel">Микрофон</span>
+      </button>
+      <button class="tool-button" id="camBtn" type="button" disabled>
+        <span class="tool-icon" id="camIcon">▣</span><span id="camLabel">Камера</span>
+      </button>
+      <button class="connect-button" id="connectBtn" type="button"><span>↗</span> Подключиться</button>
+      <button class="hangup-button" id="hangupBtn" type="button" disabled><span>■</span> Завершить</button>
+    </section>
+
+    <p class="hint" id="hint" role="status" aria-live="polite">Нажмите «Подключиться», чтобы войти в комнату.</p>
+    <p class="room-note">В комнате одновременно могут находиться только два участника. При входе третьего сервер отключит первого.</p>
+    <footer>Peer-to-peer video · WebRTC · Secure WebSocket</footer>
+  </main>
+  <script src="./app.js" defer></script>
+</body>
+</html>
